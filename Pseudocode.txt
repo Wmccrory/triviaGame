@@ -1,28 +1,29 @@
-  ////////////////////////////////////////////////////////////////////////
- ///WHAT DATA DO PEOPLE WANT TO SEE//////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////
+ ///TRIVIA GAME//////////////////////////////////////
+////////////////////////////////////////////////////
 
-//How late bars are open
-	1. Weekdays
+1. Initial story modal
+	1a. On second thought make it display on page with button, quizmaster div also hidden
 
-	2. Weekends
+2. Start game
+	2a. content slides initially hidden and big 'start' button displays
 
-//How late you can buy alcohol
-	1. Weekdays
+	2b. button dissolves and content slides move into place
 
-	2. Sundays
+3. Question comes onto screen
+	3a. 1 correct answer and 3 incorrect answers
 
+4. User presses guess
 
-//Where can you buy beer
-	1. Grocery stores
+5. Game determines if user is correct
+	4a. Different sounds triggered by correct or incorrect guess
 
-	2. Convenience stores
+6. Repeat until all trivia answered.
 
-	3. Liquor stores
+7. Game Over screen
 
-//Where can you buy liquor
-	1. Grocery stores
+8. User can restart game.
 
-	2. Convenience stores
+BONUS:
 
-	3. Liquor stores
+1. Questions randomized with no repeat questions

@@ -1,15 +1,16 @@
 /* - ELEMENTS - */
+/*div {
+    overflow-x: hidden;
+}*/
 
 body {
 	background: #243757;
+	width: 100%;
+	overflow-x: hidden;
 }
 
 .content {
-	position: absolute;
-	top: 15%;
 	z-index: 2;
-	width: 60%;
-	padding: 1% 5% 1% 6%;
 	border-top: solid 10px #000;
 	border-bottom: solid 10px #000;
 	border-right: solid 10px #000;
@@ -17,38 +18,46 @@ body {
 	background: rgba(0, 0, 0, 0.3);
 }
 
-#searchDiv {
+#question {
+	position: absolute;
+	top: 15%;
+	width: 60%;
+	padding: 1% 5% 1% 6%;
+}
+
+#answera {
 	position: absolute;
 	top: 40%;
-	z-index: 2;
 	width: 50%;
 	padding: 1% 0% 1% 6%;
-	border-top: solid 10px #000;
-	border-bottom: solid 10px #000;
-	border-right: solid 10px #000;
-	border-radius: 0 100px 100px 0px;
-	background: rgba(0, 0, 0, 0.3);
 }
 
-#results {
+#answerb {
 	position: absolute;
-	top: 60%;
-	z-index: 2;
-	height: 25%;
-	width: 60%;
-	padding: 1% 5% 1% 6%;
-	border-top: solid 10px #000;
-	border-bottom: solid 10px #000;
-	border-right: solid 10px #000;
-	border-radius: 0 150px 150px 0px;
-	background: rgba(0, 0, 0, 0.3);
-	line-height: 250%;
+	top: 55%;
+	width: 50%;
+	padding: 1% 0% 1% 6%;
 }
 
-#adArea {
+#answerc {
+	position: absolute;
+	top: 70%;
+	width: 50%;
+	padding: 1% 0% 1% 6%;
+}
+
+#answerd {
+	position: absolute;
+	top: 85%;
+	width: 50%;
+	padding: 1% 0% 1% 6%;
+}
+
+#quizmaster {
+	clear: both;
 	position: absolute;
 	top: 15%;
-	right: 0;
+	right: 0%;
 	z-index: 2;
 	height: 70%;
 	width: 13%;
@@ -65,6 +74,7 @@ body {
 footer {
 	position: fixed;
 	bottom: 0;
+	left: 0;
 	width: 100%;
 	padding: .5em 0;
 	background: rgba(0, 0, 0, 0.3);
@@ -111,7 +121,6 @@ h2 {
 	margin-left: 5%;
 	color: #fff;
 	font-style: italic;
-	opacity: .7;
 }
 
 #results h2 {
