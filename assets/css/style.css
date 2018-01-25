@@ -1,0 +1,139 @@
+/* - ELEMENTS - */
+
+body {
+	background: #243757;
+}
+
+.content {
+	position: absolute;
+	top: 15%;
+	z-index: 2;
+	width: 60%;
+	padding: 1% 5% 1% 6%;
+	border-top: solid 10px #000;
+	border-bottom: solid 10px #000;
+	border-right: solid 10px #000;
+	border-radius: 0 100px 100px 0px;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+#searchDiv {
+	position: absolute;
+	top: 40%;
+	z-index: 2;
+	width: 50%;
+	padding: 1% 0% 1% 6%;
+	border-top: solid 10px #000;
+	border-bottom: solid 10px #000;
+	border-right: solid 10px #000;
+	border-radius: 0 100px 100px 0px;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+#results {
+	position: absolute;
+	top: 60%;
+	z-index: 2;
+	height: 25%;
+	width: 60%;
+	padding: 1% 5% 1% 6%;
+	border-top: solid 10px #000;
+	border-bottom: solid 10px #000;
+	border-right: solid 10px #000;
+	border-radius: 0 150px 150px 0px;
+	background: rgba(0, 0, 0, 0.3);
+	line-height: 250%;
+}
+
+#adArea {
+	position: absolute;
+	top: 15%;
+	right: 0;
+	z-index: 2;
+	height: 70%;
+	width: 13%;
+	padding: 1% 5% 1% 6%;
+	border-top: solid 10px #000;
+	border-bottom: solid 10px #000;
+	border-left: solid 10px #000;
+	border-radius: 100px 0 0 100px;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+
+
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	padding: .5em 0;
+	background: rgba(0, 0, 0, 0.3);
+	text-align: right;
+}
+
+/*Decorative Bars*/
+
+#flavorbarA {
+	position: fixed;
+	top: 0;
+	right: 20%;
+	height: 100%;
+	width: 5%;
+	border-right: solid 10px #000;
+	border-left: solid 10px #000;
+	background: #3a5f6f;
+	background: linear-gradient(#3a5f6f, #663a6f);
+}
+
+#flavorbarB {
+	position: fixed;
+	top: 0;
+	right: 17%;
+	height: 100%;
+	width: 1%;
+	border-right: solid 10px #000;
+	border-left: solid 10px #000;
+	background: linear-gradient(#3a5f6f, #663a6f);
+}
+
+/* FONTS */
+
+h1 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 5rem;
+	font-weight: 700;
+	color: #fff;
+}
+
+h2 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1.25em;
+	margin-left: 5%;
+	color: #fff;
+	font-style: italic;
+	opacity: .7;
+}
+
+#results h2 {
+	margin-left: 0;
+}
+
+h6 {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: .75em;
+	color: #fff;
+	font-style: italic;
+}
+
+input[type=text], select, text area {
+	width: 80%;
+	padding: .5em;
+	border: 1px solid #000000;
+	border-radius: 0 100px 100px 0px;
+	resize: vertical;
+	font-size: 1.5em;
+}
+
+input:focus {
+    outline:none;
+}

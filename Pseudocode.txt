@@ -1,0 +1,28 @@
+  ////////////////////////////////////////////////////////////////////////
+ ///WHAT DATA DO PEOPLE WANT TO SEE//////////////////////////////////////
+////////////////////////////////////////////////////////////////////////
+
+//How late bars are open
+	1. Weekdays
+
+	2. Weekends
+
+//How late you can buy alcohol
+	1. Weekdays
+
+	2. Sundays
+
+
+//Where can you buy beer
+	1. Grocery stores
+
+	2. Convenience stores
+
+	3. Liquor stores
+
+//Where can you buy liquor
+	1. Grocery stores
+
+	2. Convenience stores
+
+	3. Liquor stores
