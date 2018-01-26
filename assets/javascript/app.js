@@ -1,6 +1,6 @@
 //QUESTIONS OF THE LICH//////////////////////////////////////////////
 
-//Slide mechanics///////////////////////////////////////////////////
+//Element mechanics///////////////////////////////////////////////////
 
 //Slide Out//
 function slideOut() {
@@ -14,12 +14,28 @@ function slideIn() {
 	$('#quizmaster').animate({right: '0%'}, 950); 
 }
 
+//Fade In
+function unfade() {
+	$("#welcome").fadeIn(2500);
+}
+
+//function fadeOut {
+function fade() {	
+	$("#welcome").fadeOut(500);
+}
+
 //test button//
 
 $("#button").on("click", function() {
+	unfade()
 	slideOut()
 });
 
 $("#buttonIn").on("click", function() {
+	fade()
 	slideIn()
 });
+
+window.onload = function() {
+	unfade()
+}
