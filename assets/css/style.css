@@ -19,7 +19,16 @@ body {
 	background: rgba(0, 0, 0, 0.3);
 }
 
-.content:active {
+.contentAnswer {
+	z-index: 2;
+	border-top: solid 10px #000;
+	border-bottom: solid 10px #000;
+	border-right: solid 10px #000;
+	border-radius: 0 100px 100px 0px;
+	background: rgba(0, 0, 0, 0.3);
+}
+
+.contentAnswer:active {
 	opacity: 0.5;
 }
 

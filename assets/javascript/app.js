@@ -1,8 +1,8 @@
-//QUESTIONS OF THE LICH//////////////////////////////////////////////
+//QUESTIONS OF THE VOID//////////////////////////////////////////////
 
 //Variable Bank///////////////////////////////////////////////////////
 var gameStarted = false;
-var correctAnswer;
+var correctAnswer; //Correct answer variable to compare for condition checking
 
 //Question arrays//
 questionBank = [];
@@ -24,7 +24,7 @@ function questionGet() {
 	questionBank.splice(questionNumber, 1);
 	$("#questionText").text(questionPick[0]);
 	questionPick.splice(questionPick[0], 1);
-	correctAnswer = questionPick[0];
+	correctAnswer = questionPick[0].toString();
 
 	var answerPicker = Math.floor(Math.random() * questionPick.length);
 	console.log(answerPicker);
@@ -56,12 +56,14 @@ function questionGet() {
 //Slide Out//
 function slideOut() {
 	$('.content').animate({left: '-100%'}, 1000);
+	$('.contentAnswer').animate({left: '-100%'}, 1000);
 	$('#quizmaster').animate({right: '-100%'}, 1000); 
 }
 
 //Slide in//
 function slideIn() {
 	$('.content').animate({left: '0%'}, 1000);
+	$('.contentAnswer').animate({left: '0%'}, 1000);
 	$('#quizmaster').animate({right: '0%'}, 950); 
 }
 
@@ -138,6 +140,19 @@ $("#startGame").on("click", function() {
 }//End of game progression
 
 //Test stuff
-$("#slideButton").on("click", function () {
-	questionGet()
+
+
+$(".contentAnswer").on("click", function () {
+	var answerChecker = $(this).attr("id");
+	var answerCheckerText = $("#" + answerChecker).text();
+	answerCheckerText = answerCheckerText.trim();
+	console.log(answerChecker);
+	console.log(answerCheckerText);
+	if (answerCheckerText == correctAnswer) {
+		console.log("You got it right!");
+	}
+	else
+	{
+		console.log("You got it wrong!");
+	}
 })
