@@ -2,6 +2,11 @@
 
 //Variable Bank///////////////////////////////////////////////////////
 
+//Question arrays//
+questionBank = [];
+questionBank[0] = ["dogs", "cats",];
+questionBank[1] = ["dolphins", "whales",];
+
 //soundbank//
 var startSound = new Audio("assets/sounds/start.mp3");
 var welcomeSound = new Audio("assets/sounds/welcome.mp3");
