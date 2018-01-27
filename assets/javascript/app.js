@@ -157,8 +157,12 @@ function decrement ()
 		unansweredSoundPlayer()
 		if (unanswered === 6)
 		{
-			console.log("Out of time");
-			return;
+			setTimeout(function ()
+			{
+				console.log("Game Over");
+				slideOut()
+				endingSequence()
+			}, 2000);
 		}
 		else
 		{
