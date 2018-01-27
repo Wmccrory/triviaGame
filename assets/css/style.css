@@ -111,16 +111,36 @@ body {
 	width: 50%;
 }
 
-.scoreButton {
-	display: none;
+.scoreButtonRight {
+	display: inline-block;
 	height: 20px;
 	width: 20px;
-	margin: 0 50%;
-	opacity: 0.4;
 	border: solid 10px #000;
 	border-radius: 50%;
-	background: #fff;
+	background: green;
+	opacity: 0;
 }
+
+.scoreButtonWrong {
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	border: solid 10px #000;
+	border-radius: 50%;
+	background: red;
+	opacity: 0;
+}
+
+.scoreButtonUnanswered {
+	display: inline-block;
+	height: 20px;
+	width: 20px;
+	border: solid 10px #000;
+	border-radius: 50%;
+	background: yellow;
+	opacity: 0;
+}
+
 
 footer {
 	position: fixed;

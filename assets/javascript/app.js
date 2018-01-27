@@ -1,57 +1,72 @@
 //QUESTIONS OF THE VOID//////////////////////////////////////////////
 
 //Variable Bank///////////////////////////////////////////////////////
-var gameStarted = false;
+
+var gameStarted = false; //Checking if game has started
+var answerPicked = true;
 var correctAnswer; //Correct answer variable to compare for condition checking
+
+var answerChecker; //Pulling ID of clicked element
+var answerCheckerText; //Converting ID into string to check against correct answer
+
+var questionNumber; //Determines which question to pull from questionBank array
+//var anserPicker; temporary variable plucking answers out of the array
+
+var right = 0;
+var wrong = 0;
+var unanswered = 0;
 
 //Question arrays//
 questionBank = [];
 	questionBank[0] = ["Question A", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
 	questionBank[1] = ["Question B", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
 	questionBank[2] = ["Question C", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
-questionPick = [];
+	questionBank[3] = ["Question D", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[4] = ["Question E", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[5] = ["Question F", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+
+questionPick = []; //Temporary array for current question
+
 //soundbank//
 var startSound = new Audio("assets/sounds/start.mp3");
 var welcomeSound = new Audio("assets/sounds/welcome.mp3");
 var themeSound = new Audio("assets/sounds/theme.mp3");
+var correctSound = new Audio("assets/sounds/correct.mp3");
+var incorrectSound = new Audio("assets/sounds/incorrect.mp3");
 
 //Element mechanics///////////////////////////////////////////////////
 
 //Get current question//
 function questionGet() {
-	var questionNumber = Math.floor(Math.random() * questionBank.length);
-	var questionPick = questionBank[questionNumber];
+	answerPicked = false;
+	questionNumber = Math.floor(Math.random() * questionBank.length);
+	questionPick = questionBank[questionNumber];
 	questionBank.splice(questionNumber, 1);
 	$("#questionText").text(questionPick[0]);
 	questionPick.splice(questionPick[0], 1);
 	correctAnswer = questionPick[0].toString();
 
 	var answerPicker = Math.floor(Math.random() * questionPick.length);
-	console.log(answerPicker);
 	$("#answeratext").text(questionPick[answerPicker]);
 	questionPick.splice(answerPicker, 1);
 
 	var answerPicker = Math.floor(Math.random() * questionPick.length);
-	console.log(answerPicker);
 	$("#answerbtext").text(questionPick[answerPicker]);
 	questionPick.splice(answerPicker, 1);
 
 	var answerPicker = Math.floor(Math.random() * questionPick.length);
-	console.log(answerPicker);
 	$("#answerctext").text(questionPick[answerPicker]);
 	questionPick.splice(answerPicker, 1);
 
 	var answerPicker = Math.floor(Math.random() * questionPick.length);
-	console.log(answerPicker);
 	$("#answerdtext").text(questionPick[answerPicker]);
 	questionPick.splice(answerPicker, 1);
-
-	console.log(correctAnswer);
-	console.log(questionNumber);
-	console.log(questionPick);
-	console.log(questionBank);
 }
 
+//Check picked answer against correct answer
+function answerCheck() {
+	answerCheckerText = $("#" + answerChecker).text().trim();
+}
 
 //Slide Out//
 function slideOut() {
@@ -76,27 +91,23 @@ function welcome() {
 	}, 7000);
 }
 
-//Mute Button
-function muteSound() {
-	welcomeSound.muted=true;
-	themeSound.muted=true;
-	startSound.muted=true;
-}
-
 //Welcome sequence
 function fadeWelcome() {
 	gameStarted = true;
 	$("#startGame").html("<h3>Get Ready</h3>");
-	setTimeout(function() {
+	setTimeout(function() 
+	{
 		themeSound.play();
 		$("#welcome").fadeOut(500);
 		$("#question").animate({left: '0%'}, 1000);
 		
-		setTimeout(function() {
+		setTimeout(function() 
+		{
 			$("#question").animate({left: '-100%'}, 1000);	
 		}, 2500);
 		
-		setTimeout(function() {
+		setTimeout(function() 
+		{
 			$("#questionText").text("Starring Faceless Void!");
 			$("#answerb").html("<h1>And You!</h1");
 			$('#quizmaster').animate({right: '0%'}, 950); 
@@ -104,19 +115,31 @@ function fadeWelcome() {
 			$("#answerb").animate({left: '0%'}, 1000)
 		}, 3500);
 		
-		setTimeout(function() {
+		setTimeout(function() 
+		{
 			slideOut()
 		}, 6500);
 
-		setTimeout(function() {
+		setTimeout(function() 
+		{
 			$("#answerb").html("<h2 id='answerbtext'>Answer B</h2");
 			questionGet()
+			answerPicked = false;
 			slideIn()
 		}, 7500);
 	}, 3000);
 }
 
-//test button//
+//Mute Button
+function muteSound() {
+	welcomeSound.muted=true;
+	themeSound.muted=true;
+	startSound.muted=true;
+	correctSound.muted=true;
+	incorrectSound.muted=true;
+}
+
+//mute button//
 $("#muteButton").on("click", function() {
 	muteSound()
 });
@@ -137,22 +160,50 @@ $("#startGame").on("click", function() {
 	fadeWelcome()
 	}
 });
+
+//Selecting an answer/////////////////////////////////////////////
+$(".contentAnswer").on("click", function () {
+	if (!answerPicked) 
+	{
+		answerPicked = true;
+		answerChecker = $(this).attr("id");
+		answerCheck()
+		if (answerCheckerText == correctAnswer) 
+		{
+			right++;
+			correctSound.play();
+			$("#quizmaster").append("<div class = 'scoreButtonRight'>");
+			$(".scoreButtonRight").animate({opacity:0.7},600);
+		}
+		else
+		{
+			wrong++
+			incorrectSound.play();
+			$("#quizmaster").append("<div class = 'scoreButtonWrong'>");
+			$(".scoreButtonWrong").animate({opacity:0.7},600);
+		}
+		if (right === 6 || wrong === 6 || unanswered === 6)
+		{
+			setTimeout(function ()
+			{
+				console.log("Game Over");
+				slideOut()
+			}, 2000);
+		}
+		else
+		{
+			setTimeout(function ()
+			{
+				slideOut()
+				setTimeout(function ()
+				{	
+				questionGet()
+				}, 1000);
+				slideIn()
+			}, 2000);
+		}
+	}
+});
 }//End of game progression
 
 //Test stuff
-
-
-$(".contentAnswer").on("click", function () {
-	var answerChecker = $(this).attr("id");
-	var answerCheckerText = $("#" + answerChecker).text();
-	answerCheckerText = answerCheckerText.trim();
-	console.log(answerChecker);
-	console.log(answerCheckerText);
-	if (answerCheckerText == correctAnswer) {
-		console.log("You got it right!");
-	}
-	else
-	{
-		console.log("You got it wrong!");
-	}
-})
