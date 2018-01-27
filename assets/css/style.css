@@ -268,3 +268,31 @@ h6 {
 	position: relative;
 	max-width: 100%;
 }
+
+/*Exit Sequence*/
+#exitSequenceBody {
+	display: none;
+}
+
+#exitSequenceText {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -350px;
+	margin-left: -350px;
+	transition: all 300s
+}
+
+.transform {
+	transform: rotate(3600deg);
+}
+
+#exitSequenceVoid {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -200px;
+	margin-left: -200px;
+	border-radius: 50%;
+	border: solid 1px #000;
+}

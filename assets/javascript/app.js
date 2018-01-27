@@ -380,7 +380,7 @@ function endingSequence() {
 	setTimeout(function ()
 	{
 		$("#answeratext").text("CORRECT: ");
-		$("#quizmaster").html("<img src='assets/images/voidportrait.gif' alt='Faceless Void portrait' /><h2>THANKS FOR PLAYING QUESTIONS OF THE VOID</h2>");
+		$("#quizmaster").html("<img src='assets/images/voidportrait.gif' alt='Faceless Void portrait' />");
 		for (i = 0; i < right; i++) {
 			$("#answera").append("<div class = 'scoreButtonRight'>");
 			$(".scoreButtonRight").animate({opacity:0.7},100);
@@ -413,5 +413,7 @@ function endingSequence() {
 	setTimeout(function ()
 	{
 		slideOut()
+		$("#exitSequenceBody").fadeIn(3000);
+		$("#exitSequenceText").addClass("transform");
 	}, 10000);
 }
