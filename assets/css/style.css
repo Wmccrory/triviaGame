@@ -34,7 +34,7 @@ body {
 
 #question {
 	position: absolute;
-	top: 15%;
+	top: 10%;
 	left: -100%;
 	width: 60%;
 	padding: 1% 5% 1% 6%;
@@ -75,7 +75,7 @@ body {
 #quizmaster {
 	clear: both;
 	position: absolute;
-	top: 15%;
+	top: 10%;
 	right: -100%;
 	z-index: 2;
 	height: 70%;
@@ -262,4 +262,9 @@ h6 {
 	font-size: .75em;
 	color: #fff;
 	font-style: italic;
+}
+
+#questionText {
+	position: relative;
+	max-width: 100%;
 }
