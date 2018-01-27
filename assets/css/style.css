@@ -111,6 +111,22 @@ body {
 	width: 50%;
 }
 
+#timerFace {
+	position: absolute;
+	bottom: 10px;
+	right: 25px;
+	height: 100px;
+	width: 100px;
+	background: rgba(0, 255, 0, 0.1);
+	border: solid 10px #000;
+	border-radius: 50%;
+}
+
+#timerSpacer {
+	text-align: center;
+	margin-top: 10px;
+}
+
 .scoreButtonRight {
 	display: inline-block;
 	height: 20px;
@@ -246,17 +262,4 @@ h6 {
 	font-size: .75em;
 	color: #fff;
 	font-style: italic;
-}
-
-input[type=text], select, text area {
-	width: 80%;
-	padding: .5em;
-	border: 1px solid #000000;
-	border-radius: 0 100px 100px 0px;
-	resize: vertical;
-	font-size: 1.5em;
-}
-
-input:focus {
-    outline:none;
 }

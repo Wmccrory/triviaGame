@@ -16,6 +16,9 @@ var right = 0;
 var wrong = 0;
 var unanswered = 0;
 
+var seconds = 15; //Timing increment mechanisms.
+var intervalId; //Trigger of timing increment.  1000 = 1 second
+
 //Question arrays//
 questionBank = [];
 	questionBank[0] = ["Question A", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
@@ -33,11 +36,13 @@ var welcomeSound = new Audio("assets/sounds/welcome.mp3");
 var themeSound = new Audio("assets/sounds/theme.mp3");
 var correctSound = new Audio("assets/sounds/correct.mp3");
 var incorrectSound = new Audio("assets/sounds/incorrect.mp3");
+var unansweredSound = new Audio("assets/sounds/unanswered.mp3");
 
 //Element mechanics///////////////////////////////////////////////////
 
 //Get current question//
-function questionGet() {
+function questionGet() 
+{
 	answerPicked = false;
 	questionNumber = Math.floor(Math.random() * questionBank.length);
 	questionPick = questionBank[questionNumber];
@@ -61,6 +66,8 @@ function questionGet() {
 	var answerPicker = Math.floor(Math.random() * questionPick.length);
 	$("#answerdtext").text(questionPick[answerPicker]);
 	questionPick.splice(answerPicker, 1);
+
+	countDown()
 }
 
 //Check picked answer against correct answer
@@ -68,8 +75,50 @@ function answerCheck() {
 	answerCheckerText = $("#" + answerChecker).text().trim();
 }
 
+//Timing Mechanisms
+function countDown ()
+{
+	clearInterval(intervalId);
+	intervalId = setInterval(decrement, 1000);
+}
+
+function decrement ()
+{
+	seconds--;
+	$("#timerBody").html(seconds);
+	if (seconds === 0)
+	{
+		answerPicked = true;
+		clearInterval(intervalId);
+		unanswered++;
+		seconds = 15;
+		$("#timerBody").html("");
+		$("#quizmaster").append("<div class = 'scoreButtonUnanswered'>");
+		$(".scoreButtonUnanswered").animate({opacity:0.7},600);
+		unansweredSound.play()
+		if (unanswered === 6)
+		{
+			console.log("Out of time");
+			return;
+		}
+		else
+		{
+			setTimeout(function ()
+				{
+					slideOut()
+					setTimeout(function ()
+					{	
+					questionGet()
+					}, 1000);
+					slideIn()
+				}, 2000);
+		}
+	}
+}
+
 //Slide Out//
-function slideOut() {
+function slideOut() 
+{
 	$('.content').animate({left: '-100%'}, 1000);
 	$('.contentAnswer').animate({left: '-100%'}, 1000);
 	$('#quizmaster').animate({right: '-100%'}, 1000); 
@@ -126,6 +175,7 @@ function fadeWelcome() {
 			questionGet()
 			answerPicked = false;
 			slideIn()
+			countDown()
 		}, 7500);
 	}, 3000);
 }
@@ -137,6 +187,7 @@ function muteSound() {
 	startSound.muted=true;
 	correctSound.muted=true;
 	incorrectSound.muted=true;
+	unansweredSound.muted=true;
 }
 
 //mute button//
@@ -165,6 +216,10 @@ $("#startGame").on("click", function() {
 $(".contentAnswer").on("click", function () {
 	if (!answerPicked) 
 	{
+		clearInterval(intervalId);
+		seconds = 15;
+		$("#timerBody").html("");
+
 		answerPicked = true;
 		answerChecker = $(this).attr("id");
 		answerCheck()
@@ -182,7 +237,7 @@ $(".contentAnswer").on("click", function () {
 			$("#quizmaster").append("<div class = 'scoreButtonWrong'>");
 			$(".scoreButtonWrong").animate({opacity:0.7},600);
 		}
-		if (right === 6 || wrong === 6 || unanswered === 6)
+		if (right === 6 || wrong === 6)
 		{
 			setTimeout(function ()
 			{
