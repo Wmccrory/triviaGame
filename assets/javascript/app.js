@@ -199,7 +199,6 @@ function welcome() {
 	welcomeSound.play();
 	$("#welcome").fadeIn(2500);
 	setTimeout(function () {
-		// themeSound.play()
 	}, 7000);
 }
 
@@ -248,7 +247,55 @@ function fadeWelcome() {
 	}, 3000);
 }
 
-//End Sequence
+//End Sequence//
+function endingSequence() {
+	slideOut()
+	setTimeout(function ()
+	{
+		$("#questionText").text("Your time is.. up!");
+		$('.content').animate({left: '0%'}, 1000);
+	}, 2000);
+
+	setTimeout(function ()
+	{
+		$("#answeratext").text("CORRECT: ");
+		$("#quizmaster").html("<img src='assets/images/voidportrait.gif' alt='Faceless Void portrait' />");
+		for (i = 0; i < right; i++) {
+			$("#answera").append("<div class = 'scoreButtonRight'>");
+			$(".scoreButtonRight").animate({opacity:0.7},100);
+		}
+		$('#answera').animate({left: '0%'}, 1000);
+		$('#quizmaster').animate({right: '0%'}, 950); 
+	}, 3000);
+
+	setTimeout(function ()
+	{
+		$("#answerbtext").text("INCORRECT: ");
+		for (i = 0; i < wrong; i++) {
+			$("#answerb").append("<div class = 'scoreButtonWrong'>");
+			$(".scoreButtonWrong").animate({opacity:0.7},100);
+		}
+		$('#answerb').animate({left: '0%'}, 1000);
+	}, 3500);
+
+	setTimeout(function ()
+	{
+		faceintroSound.play()
+		$("#answerctext").text("UNANSWERED: ");
+		for (i = 0; i < unanswered; i++) {
+			$("#answerc").append("<div class = 'scoreButtonUnanswered'>");
+			$(".scoreButtonUnanswered").animate({opacity:0.7},100);
+		}
+		$('#answerc').animate({left: '0%'}, 1000);
+	}, 4000);
+
+	setTimeout(function ()
+	{
+		slideOut()
+		$("#exitSequenceBody").fadeIn(3000);
+		$("#exitSequenceText").addClass("transform");
+	}, 10000);
+}
 
  ////////////////////////
 //Sound Player Functions
@@ -281,21 +328,17 @@ function unansweredSoundPlayer()
 }
 
 //Mute Button
-// function muteSound() {
+function workPlease() 
+{
 // 	welcomeSound.muted=true;
-// 	themeSound.muted=true;
+	themeSound.muted = true;
 // 	startSound.muted=true;
-// 	muteSound = true;
-// }
+	muteSound = true;
+}
 
 //mute button//
 $("#muteButton").on("click", function() {
-	muteSound()
-});
-
-$("#buttonIn").on("click", function() {
-	fade()
-	slideIn()
+	workPlease()
 });
 
 ///////////////////////////////////////////////////////////////////
@@ -368,52 +411,3 @@ $(".contentAnswer").on("click", function () {
 }//End of game progression
 
 //Test stuff
-
-function endingSequence() {
-	slideOut()
-	setTimeout(function ()
-	{
-		$("#questionText").text("Your time is.. up!");
-		$('.content').animate({left: '0%'}, 1000);
-	}, 2000);
-
-	setTimeout(function ()
-	{
-		$("#answeratext").text("CORRECT: ");
-		$("#quizmaster").html("<img src='assets/images/voidportrait.gif' alt='Faceless Void portrait' />");
-		for (i = 0; i < right; i++) {
-			$("#answera").append("<div class = 'scoreButtonRight'>");
-			$(".scoreButtonRight").animate({opacity:0.7},100);
-		}
-		$('#answera').animate({left: '0%'}, 1000);
-		$('#quizmaster').animate({right: '0%'}, 950); 
-	}, 3000);
-
-	setTimeout(function ()
-	{
-		$("#answerbtext").text("INCORRECT: ");
-		for (i = 0; i < wrong; i++) {
-			$("#answerb").append("<div class = 'scoreButtonWrong'>");
-			$(".scoreButtonWrong").animate({opacity:0.7},100);
-		}
-		$('#answerb').animate({left: '0%'}, 1000);
-	}, 3500);
-
-	setTimeout(function ()
-	{
-		faceintroSound.play()
-		$("#answerctext").text("UNANSWERED: ");
-		for (i = 0; i < unanswered; i++) {
-			$("#answerc").append("<div class = 'scoreButtonUnanswered'>");
-			$(".scoreButtonUnanswered").animate({opacity:0.7},100);
-		}
-		$('#answerc').animate({left: '0%'}, 1000);
-	}, 4000);
-
-	setTimeout(function ()
-	{
-		slideOut()
-		$("#exitSequenceBody").fadeIn(3000);
-		$("#exitSequenceText").addClass("transform");
-	}, 10000);
-}
