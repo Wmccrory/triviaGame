@@ -27,6 +27,17 @@ questionBank = [];
 	questionBank[3] = ["Question D", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
 	questionBank[4] = ["Question E", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
 	questionBank[5] = ["Question F", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[6] = ["Question G", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[7] = ["Question H", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[8] = ["Question I", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[9] = ["Question J", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[10] = ["Question K", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[11] = ["Question L", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[12] = ["Question M", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[13] = ["Question N", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[14] = ["Question O", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+	questionBank[15] = ["Question P", "Correct Answer", "Incorrect Answer A", "Incorrect Answer B", "Incorrect Answer C"];
+
 
 questionPick = []; //Temporary array for current question
 
