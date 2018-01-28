@@ -7,6 +7,7 @@ body {
 	background: #243757;
 	width: 100%;
 	overflow-x: hidden;
+	overflow-y: hidden;
 	user-select: none;
 }
 
@@ -164,8 +165,9 @@ footer {
 	left: 0;
 	width: 100%;
 	padding: .5em 0;
-	background: rgba(0, 0, 0, 0.3);
+	background: rgba(0, 0, 0, 0.2);
 	text-align: right;
+	z-index: 2;
 }
 
 /*Decorative Bars*/
@@ -278,14 +280,30 @@ h6:visited {
 /*Exit Sequence*/
 #exitSequenceBody {
 	display: none;
+	z-index: 2;
+}
+
+#exitSequenceBackground {
+	position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 850px;
+    width: 850px;
+    margin-top: -475px;
+    margin-left: -475px;
+    background: #FFF;
+    border: solid 50px #000;
+    border-radius: 50%;
+    z-index: 2;
 }
 
 #exitSequenceText {
-	position: fixed;
+	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-top: -350px;
 	margin-left: -350px;
+	z-index: 2;
 	transition: all 300s
 }
 
@@ -294,11 +312,12 @@ h6:visited {
 }
 
 #exitSequenceVoid {
-	position: fixed;
+	position: absolute;
 	top: 50%;
 	left: 50%;
 	margin-top: -200px;
 	margin-left: -200px;
 	border-radius: 50%;
 	border: solid 1px #000;
+	z-index: 2;
 }
