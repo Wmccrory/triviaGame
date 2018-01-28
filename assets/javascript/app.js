@@ -415,3 +415,6 @@ $(".contentAnswer").on("click", function () {
 }//End of game progression
 
 //Test stuff
+$("#exitSequenceBody").on("click", function () {
+	window.location.reload();
+});
