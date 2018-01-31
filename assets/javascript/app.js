@@ -19,7 +19,7 @@ var unanswered = 0;
 var seconds = 15; //Timing increment mechanisms.
 var intervalId; //Trigger of timing increment.  1000 = 1 second
 
-//Question arrays//
+//Question arrays// Format is [Question, correct answer, incorrect answer, incorrect answer, incorrect answer]
 questionBank = [];
 	questionBank[0] = ["Oracle paid Phantom Assassin to:", "Kill the enemies he foresaw killing him", "Spare his life after discovering the bounty on his head", "Be his bodyguard on the battlefield", "Kill the hero preventing his prophecy from being fulfilled"];
 	questionBank[1] = ["Roshan always resurrects because:", "Cursed by the gods for killing a shopkeeper", "Dire imbues him with immortality", "Lots of practice, rest, exercise, and eating healthy", "His hate is too strong for the afterlife"];
@@ -37,8 +37,8 @@ questionBank = [];
 	questionBank[13] = ["Phoenix is:", "A sentient star who manifests as a bird", "A magical magician powered by solar energy", "A bored god", "A golem crafted from fire and wind"];
 	questionBank[14] = ["Huskar was once almost martyred until:", "Dazzle cast shallow grave, which Huskar never forgave him for", "The gods determined he would be their emissary to the Ancients", "His body began to heal itself", "The Radiant intervened on his behalf"];
 	questionBank[15] = ["Sniper was exiled from his village because:", "He was too good a shot", "He refused to follow orders", "Tradition dictated the firstborn son must always leave home", "He failed to protect against an incursion from the Dead God"];
-
-
+	questionBank[16] = ["Abaddon got his powers by:", "Inhaling mystical vapors", "An ethereal being fused with his weapon", "Drinking magical elixer", "An unholy deal with Shadow Demon"];
+	
 questionPick = []; //Temporary array for current question
 
 //soundbank//
@@ -127,6 +127,46 @@ function questionGet()
 //Check picked answer against correct answer
 function answerCheck() {
 	answerCheckerText = $("#" + answerChecker).text().trim();
+	if (answerCheckerText == correctAnswer) 
+		{
+			right++;
+			correctSoundPlayer()
+			$("#quizmaster").append("<div class = 'scoreButtonRight'>");
+			$(".scoreButtonRight").animate({opacity:0.7},600);
+		}
+		else
+		{
+			wrong++
+			incorrectSoundPlayer()
+			$("#quizmaster").append("<div class = 'scoreButtonWrong'>");
+			$(".scoreButtonWrong").animate({opacity:0.7},600);
+		}
+		if (right === 6 || wrong === 6)
+		{
+			setTimeout(function ()
+			{
+				console.log("Game Over");
+				slideOut()
+				endingSequence()
+			}, 2000);
+		}
+		else
+		{
+			setTimeout(function ()
+			{
+				slideOut()
+				setTimeout(function ()
+				{	
+				questionGet()
+				}, 1000);
+				
+				slideIn()
+			}, 2000);
+			setTimeout(function ()
+			{
+				questionSoundPlayer()
+			}, 4000);
+		}
 }
 
 //Timing Mechanisms
@@ -366,55 +406,16 @@ $(".contentAnswer").on("click", function () {
 		clearInterval(intervalId);
 		seconds = 15;
 		$("#timerBody").html("");
-
 		answerPicked = true;
 		answerChecker = $(this).attr("id");
 		answerCheck()
-		if (answerCheckerText == correctAnswer) 
-		{
-			right++;
-			correctSoundPlayer()
-			$("#quizmaster").append("<div class = 'scoreButtonRight'>");
-			$(".scoreButtonRight").animate({opacity:0.7},600);
-		}
-		else
-		{
-			wrong++
-			incorrectSoundPlayer()
-			$("#quizmaster").append("<div class = 'scoreButtonWrong'>");
-			$(".scoreButtonWrong").animate({opacity:0.7},600);
-		}
-		if (right === 6 || wrong === 6)
-		{
-			setTimeout(function ()
-			{
-				console.log("Game Over");
-				slideOut()
-				endingSequence()
-			}, 2000);
-		}
-		else
-		{
-			setTimeout(function ()
-			{
-				slideOut()
-				setTimeout(function ()
-				{	
-				questionGet()
-				}, 1000);
-				
-				slideIn()
-			}, 2000);
-			setTimeout(function ()
-			{
-				questionSoundPlayer()
-			}, 4000);
-		}
 	}
+});
+
+//Refreshes game after completion////////////////////////////////
+$("#exitSequenceBody").on("click", function () {
+	window.location.reload();
 });
 }//End of game progression
 
 //Test stuff
-$("#exitSequenceBody").on("click", function () {
-	window.location.reload();
-});
